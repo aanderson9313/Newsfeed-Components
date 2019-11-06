@@ -85,8 +85,15 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Fifth article',
+    date: 'Nov 5th, 2019',
+    firstParagraph: `Hey there`,
+    secondParagraph: `Wazzzzzzup`,
+    thirdParagraph: `I'm not very creative with these!`
   }
-];
+]
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
@@ -112,3 +119,46 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+const createArticle = (title, date, firstParagraph, secondParagraph, thirdParagraph, ) => {
+  // defining new Elements
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const firstPara = document.createElement('p');
+  const secondPara = document.createElement('p');
+  const thirdPara = document.createElement('p');
+  const expandButton = document.createElement('button');
+
+// html tree
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(firstPara);
+  article.appendChild(secondPara);
+  article.appendChild(thirdPara);
+  article.appendChild(expandButton);
+
+  // set classLists
+  article.classList.add('article', 'article-open');
+  articleDate.classList.add('date',);
+  expandButton.classList.add('expandButton');
+
+  // content
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  firstPara.textContent = firstParagraph;
+  secondPara.textContent = secondParagraph;
+  thirdPara.textContent = thirdParagraph;
+  expandButton.textContent = 'pick me!';
+
+  // functionality
+  expandButton.addEventListener('click', () => {
+    article.classList.toggle('article-open');
+  });
+
+  return article;
+};
+const parentComponent = document.querySelector('.articles');
+
+data.forEach(data => {
+  parentComponent.appendChild(createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph));
+});
