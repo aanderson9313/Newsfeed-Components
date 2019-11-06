@@ -117,41 +117,41 @@ const createArticle = (title, date, firstParagraph, secondParagraph, thirdParagr
   const article = document.createElement('div');
   const articleTitle = document.createElement('h2');
   const articleDate = document.createElement('p');
-  const firstParagraph = document.createElement('p');
-  const secondParagraph = document.createElement('p');
-  const thirdParagraph = document.createElement('p');
+  const firstPara = document.createElement('p');
+  const secondPara = document.createElement('p');
+  const thirdPara = document.createElement('p');
   const expandButton = document.createElement('span');
 
 // html tree
-article.appendChild(articleTitle);
-article.appendChild(articleDate);
-article.appendChild(firstParagraph);
-article.appendChild(secondParagraph);
-article.appendChild(thirdParagraph);
-article.appendChild(expandButton);
+  article.appendChild(articleTitle);
+  article.appendChild(articleDate);
+  article.appendChild(firstPara);
+  article.appendChild(secondPara);
+  article.appendChild(thirdPara);
+  article.appendChild(expandButton);
 
-// set classLists
-articleDate.classList.add('date', 'article-open');
-expandButton.classList.add('expandButton');
+  // set classLists
+  article.classList.add('article', 'article-on');
+  articleDate.classList.add('date',);
+  expandButton.classList.add('expandButton');
 
-// content
-articleTitle.textContent = title;
-articleDate.textContent = date;
-firstParagraph.textContent = firstParagraph;
-secondParagraph.textContent = secondParagraph;
-thirdParagraph.textContent = thirdParagraph;
-spanBtn.textContent = 'pick me!';
+  // content
+  articleTitle.textContent = title;
+  articleDate.textContent = date;
+  firstParagraph.textContent = firstParagraph;
+  secondParagraph.textContent = secondParagraph;
+  thirdParagraph.textContent = thirdParagraph;
+  expandButton.textContent = 'pick me!';
 
-// functionality
-expandButton.addEventListener('click', () => {
-  article.classList.toggle('toggle-on');
-});
+  // functionality
+  expandButton.addEventListener('click', () => {
+    article.classList.toggle('toggle-on');
+  });
 
   return article;
 };
-const parentComponent = document.querySelector('articles');
+const parentComponent = document.querySelector('.articles');
 
 data.forEach(data => {
-  const newArticle = document.createElement(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph);
-  parentComponent.appendChild(newArticle);
+  parentComponent.appendChild(createArticle(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph));
 });
