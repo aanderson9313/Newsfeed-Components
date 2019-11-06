@@ -85,6 +85,13 @@ const data = [
     thirdParagraph: `Hodor hodor - hodor... Hodor hodor hodor hodor. Hodor. Hodor! Hodor hodor, hodor hodor hodor hodor hodor; hodor hodor? Hodor!
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
+  },
+  {
+    title: 'Fifth article',
+    date: 'Nov 5th, 2019',
+    firstParagraph: `Hey there`,
+    secondParagraph: `Wazzzzzzup`,
+    thirdParagraph: `I'm not very creative with these!`
   }
 ]
 
@@ -120,7 +127,7 @@ const createArticle = (title, date, firstParagraph, secondParagraph, thirdParagr
   const firstPara = document.createElement('p');
   const secondPara = document.createElement('p');
   const thirdPara = document.createElement('p');
-  const expandButton = document.createElement('span');
+  const expandButton = document.createElement('button');
 
 // html tree
   article.appendChild(articleTitle);
@@ -131,21 +138,21 @@ const createArticle = (title, date, firstParagraph, secondParagraph, thirdParagr
   article.appendChild(expandButton);
 
   // set classLists
-  article.classList.add('article', 'article-on');
+  article.classList.add('article', 'article-open');
   articleDate.classList.add('date',);
   expandButton.classList.add('expandButton');
 
   // content
   articleTitle.textContent = title;
   articleDate.textContent = date;
-  firstParagraph.textContent = firstParagraph;
-  secondParagraph.textContent = secondParagraph;
-  thirdParagraph.textContent = thirdParagraph;
+  firstPara.textContent = firstParagraph;
+  secondPara.textContent = secondParagraph;
+  thirdPara.textContent = thirdParagraph;
   expandButton.textContent = 'pick me!';
 
   // functionality
   expandButton.addEventListener('click', () => {
-    article.classList.toggle('toggle-on');
+    article.classList.toggle('article-open');
   });
 
   return article;
