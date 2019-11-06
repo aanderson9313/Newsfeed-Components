@@ -86,7 +86,7 @@ const data = [
           Hodor hodor, HODOR hodor, hodor hodor?! Hodor! Hodor hodor, HODOR hodor, hodor hodor, hodor, hodor hodor. Hodor, hodor.
           Hodor. Hodor, hodor, hodor. Hodor hodor... Hodor hodor hodor?! Hodor, hodor... Hodor hodor HODOR hodor, hodor hodor. Hodor.`
   }
-];
+]
 
 /* Step 1: Create a function that creates a component. You will want your component to look like the template below: 
   
@@ -112,3 +112,46 @@ const data = [
   Step 5: Add a new article to the array. Make sure it is in the same format as the others. Refresh the page to see the new article.
 
 */
+const createArticle = (title, date, firstParagraph, secondParagraph, thirdParagraph, ) => {
+  // defining new Elements
+  const article = document.createElement('div');
+  const articleTitle = document.createElement('h2');
+  const articleDate = document.createElement('p');
+  const firstParagraph = document.createElement('p');
+  const secondParagraph = document.createElement('p');
+  const thirdParagraph = document.createElement('p');
+  const expandButton = document.createElement('span');
+
+// html tree
+article.appendChild(articleTitle);
+article.appendChild(articleDate);
+article.appendChild(firstParagraph);
+article.appendChild(secondParagraph);
+article.appendChild(thirdParagraph);
+article.appendChild(expandButton);
+
+// set classLists
+articleDate.classList.add('date', 'article-open');
+expandButton.classList.add('expandButton');
+
+// content
+articleTitle.textContent = title;
+articleDate.textContent = date;
+firstParagraph.textContent = firstParagraph;
+secondParagraph.textContent = secondParagraph;
+thirdParagraph.textContent = thirdParagraph;
+spanBtn.textContent = 'pick me!';
+
+// functionality
+expandButton.addEventListener('click', () => {
+  article.classList.toggle('toggle-on');
+});
+
+  return article;
+};
+const parentComponent = document.querySelector('articles');
+
+data.forEach(data => {
+  const newArticle = document.createElement(data.title, data.date, data.firstParagraph, data.secondParagraph, data.thirdParagraph);
+  parentComponent.appendChild(newArticle);
+});
